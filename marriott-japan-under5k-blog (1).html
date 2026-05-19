@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marriott ญี่ปุ่น ต่ำกว่า 5,000 บาท | Mamatabi.jp</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink:    #F2A7B0;
+    --pink-lt: #FDE8EA;
+    --blush:   #FDF5F6;
+    --sage:    #8BAF8E;
+    --sage-lt: #E4EFE5;
+    --warm:    #F7A85A;
+    --warm-lt: #FEF0E0;
+    --dark:    #2E2626;
+    --mid:     #7A6B6B;
+    --cream:   #FFFAF8;
+    --white:   #FFFFFF;
+    --border:  #F0E5E5;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--cream); color:var(--dark); font-family:'Sarabun',sans-serif; font-weight:400; line-height:1.85; font-size:16px; }
+
+  /* HERO */
+  .hero { background:linear-gradient(160deg,#fff0f2 0%,#fde8cb 55%,#f0f0ff 100%); min-height:85vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:64px 24px 80px; position:relative; overflow:hidden; }
+  .hero::before { content:'✈ 🏨 🌸 🍱 👶 🎌 ♨️ 🌊'; position:absolute; top:18px; left:0; right:0; font-size:20px; letter-spacing:16px; opacity:.1; white-space:nowrap; overflow:hidden; }
+  .hero-eyebrow { display:inline-block; background:var(--pink); color:#fff; font-size:12px; font-weight:700; letter-spacing:2px; padding:6px 18px; border-radius:20px; margin-bottom:22px; opacity:0; animation:popIn .6s ease .2s forwards; }
+  .hero h1 { font-family:'Noto Serif Thai',serif; font-size:clamp(28px,6vw,60px); color:var(--dark); line-height:1.3; margin-bottom:8px; opacity:0; animation:popIn .6s ease .4s forwards; }
+  .hero h1 .accent { color:var(--pink); }
+  .hero-sub { font-size:clamp(14px,2vw,17px); color:var(--mid); max-width:520px; margin:14px auto 32px; opacity:0; animation:popIn .6s ease .6s forwards; line-height:1.8; }
+  .hero-chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; opacity:0; animation:popIn .6s ease .8s forwards; }
+  .chip { background:var(--white); border:1.5px solid var(--border); border-radius:24px; padding:7px 14px; font-size:12.5px; color:var(--dark); font-weight:500; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+
+  /* INTRO */
+  .intro { max-width:680px; margin:60px auto 0; padding:0 24px; }
+  .author-card { display:flex; align-items:center; gap:14px; background:var(--white); border:1.5px solid var(--border); border-radius:16px; padding:14px 18px; margin-bottom:32px; box-shadow:0 2px 12px rgba(0,0,0,.04); }
+  .author-avatar { width:46px; height:46px; border-radius:50%; background:linear-gradient(135deg,var(--pink),var(--warm)); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .author-name { font-weight:700; font-size:14px; color:var(--dark); }
+  .author-desc { font-size:12px; color:var(--mid); margin-top:2px; }
+  .intro-body { font-size:16px; line-height:2; color:var(--dark); }
+  .intro-body p+p { margin-top:16px; }
+  .mom-note { background:var(--pink-lt); border-left:4px solid var(--pink); border-radius:0 12px 12px 0; padding:16px 20px; margin:24px 0; font-size:14.5px; line-height:1.85; color:#5a3a3a; }
+  .mom-note strong { color:#c0505a; }
+
+  /* SECTION HEADER */
+  .section-header { text-align:center; padding:60px 24px 10px; }
+  .section-label { display:inline-block; background:var(--sage-lt); color:var(--sage); font-size:11px; font-weight:700; letter-spacing:3px; padding:5px 14px; border-radius:16px; text-transform:uppercase; margin-bottom:12px; }
+  .section-header h2 { font-family:'Noto Serif Thai',serif; font-size:clamp(22px,4vw,36px); color:var(--dark); line-height:1.3; }
+  .section-header p { color:var(--mid); font-size:13.5px; margin-top:8px; }
+
+  /* HOTEL CARDS */
+  .hotels-wrap { max-width:820px; margin:0 auto; padding:28px 20px 60px; }
+  .hotel-card { background:var(--white); border-radius:20px; margin-bottom:36px; box-shadow:0 4px 20px rgba(0,0,0,.06); overflow:hidden; border:1.5px solid var(--border); transition:transform .25s,box-shadow .25s; }
+  .hotel-card:hover { transform:translateY(-3px); box-shadow:0 10px 32px rgba(0,0,0,.1); }
+  .hotel-card.reviewed { border-top:4px solid var(--pink); }
+  .card-top { padding:26px 26px 0; display:flex; gap:14px; align-items:flex-start; flex-wrap:wrap; }
+  .card-num { font-family:'Noto Serif Thai',serif; font-size:48px; color:var(--pink-lt); line-height:1; flex-shrink:0; font-weight:700; }
+  .card-info { flex:1; min-width:200px; }
+  .card-badges { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:7px; }
+  .badge { font-size:10.5px; font-weight:600; padding:3px 9px; border-radius:12px; white-space:nowrap; }
+  .badge-brand    { background:var(--warm-lt); color:#b56a10; }
+  .badge-review   { background:var(--pink-lt); color:#c0505a; }
+  .badge-new      { background:var(--sage-lt); color:#3d7a42; }
+  .badge-research { background:#f0f0f8; color:#5555a0; }
+  .card-name { font-family:'Noto Serif Thai',serif; font-size:clamp(17px,2.5vw,22px); color:var(--dark); font-weight:700; line-height:1.3; }
+  .card-loc { font-size:12.5px; color:var(--mid); margin-top:4px; }
+  .card-body { padding:18px 26px 26px; }
+  .price-bar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:var(--cream); border-radius:12px; padding:10px 14px; margin-bottom:18px; }
+  .price-thb { font-size:19px; font-weight:700; color:var(--dark); }
+  .price-thb small { font-size:12.5px; font-weight:400; color:var(--mid); }
+  .price-jpy { font-size:12px; color:var(--mid); background:var(--white); border:1px solid var(--border); padding:3px 9px; border-radius:9px; }
+  .card-story { font-size:15px; line-height:2; color:#3a2e2e; margin-bottom:16px; }
+  .card-story p+p { margin-top:12px; }
+  .perks-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:7px; margin:14px 0 18px; }
+  .perk-item { display:flex; align-items:flex-start; gap:6px; font-size:12.5px; background:var(--sage-lt); border-radius:9px; padding:7px 11px; color:#2a4a2e; }
+  .tip-bubble { background:var(--warm-lt); border-radius:12px; padding:13px 16px; font-size:13px; color:#6b3d10; line-height:1.8; margin-top:10px; }
+  .tip-bubble strong { color:#b56a10; }
+  .warn-bubble { background:#fff5f5; border-left:3px solid #f4a0a0; border-radius:0 10px 10px 0; padding:10px 14px; font-size:12.5px; color:#804040; line-height:1.7; margin-top:8px; }
+
+  /* STATUS STRIP */
+  .perks-strip { background:linear-gradient(135deg,#2E2626 0%,#4a3030 100%); padding:52px 24px; text-align:center; }
+  .perks-strip h3 { font-family:'Noto Serif Thai',serif; font-size:clamp(18px,3vw,28px); color:#fff; margin-bottom:8px; }
+  .strip-sub { color:rgba(255,255,255,.6); font-size:13.5px; margin-bottom:32px; max-width:540px; margin-left:auto; margin-right:auto; line-height:1.8; }
+  .strip-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:14px; max-width:760px; margin:0 auto; }
+  .strip-card { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:16px 14px; text-align:left; }
+  .strip-icon { font-size:24px; margin-bottom:6px; }
+  .strip-title { font-size:12.5px; font-weight:700; color:var(--pink); margin-bottom:4px; }
+  .strip-desc { font-size:11.5px; color:rgba(255,255,255,.5); line-height:1.65; }
+
+  /* NO STATUS */
+  .no-status { background:var(--white); padding:60px 24px 68px; }
+  .no-status-inner { max-width:820px; margin:0 auto; }
+  .no-status-header { text-align:center; margin-bottom:36px; }
+  .emoji-big { font-size:44px; display:block; margin-bottom:10px; }
+  .no-status-header h3 { font-family:'Noto Serif Thai',serif; font-size:clamp(18px,3.5vw,28px); color:var(--dark); margin-bottom:8px; line-height:1.4; }
+  .no-status-header p { color:var(--mid); font-size:14px; max-width:540px; margin:0 auto; line-height:1.85; }
+  .budget-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:18px; }
+  .budget-card { border-radius:16px; border:1.5px solid var(--border); overflow:hidden; transition:transform .2s,box-shadow .2s; }
+  .budget-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.08); }
+  .budget-card-top { padding:18px 18px 12px; display:flex; align-items:center; gap:10px; }
+  .budget-icon { font-size:30px; flex-shrink:0; }
+  .budget-brand { font-weight:700; font-size:14.5px; color:var(--dark); }
+  .budget-sub { font-size:11px; color:var(--mid); margin-top:2px; }
+  .budget-price { font-size:20px; font-weight:700; padding:0 18px 3px; }
+  .budget-price small { font-size:11.5px; font-weight:400; color:var(--mid); }
+  .budget-desc { padding:0 18px 14px; font-size:12.5px; color:var(--mid); line-height:1.7; }
+  .budget-locations { margin:4px 18px 14px; display:flex; flex-wrap:wrap; gap:5px; }
+  .loc-tag { font-size:11px; background:var(--cream); border:1px solid var(--border); border-radius:7px; padding:2px 7px; color:var(--mid); }
+  .budget-card.fpf .budget-card-top { background:var(--warm-lt); }
+  .budget-card.fpf .budget-price    { color:#b56a10; }
+  .budget-card.moxy .budget-card-top { background:#f0edff; }
+  .budget-card.moxy .budget-price    { color:#5040a0; }
+  .budget-card.fairfield .budget-card-top { background:var(--sage-lt); }
+  .budget-card.fairfield .budget-price    { color:#3d7a42; }
+  .budget-card.aloft .budget-card-top { background:#fff0e8; }
+  .budget-card.aloft .budget-price    { color:#c05010; }
+
+  /* IG */
+  .ig-section { background:var(--blush); padding:60px 24px; }
+  .ig-inner { max-width:680px; margin:0 auto; }
+  .ig-section h3 { font-family:'Noto Serif Thai',serif; font-size:clamp(20px,3.5vw,28px); color:var(--dark); margin-bottom:4px; text-align:center; }
+  .ig-intro { text-align:center; color:var(--mid); font-size:13px; margin-bottom:32px; }
+  .ig-card { background:var(--white); border-radius:16px; border:1.5px solid var(--border); margin-bottom:20px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.04); }
+  .ig-card-head { padding:12px 18px; background:var(--pink-lt); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#c0505a; }
+  .ig-text { padding:18px; font-size:14px; line-height:2; color:var(--dark); white-space:pre-line; }
+  .ig-text .tags { color:#4a7abf; font-size:12.5px; margin-top:8px; display:block; line-height:1.8; }
+  .copy-btn { display:inline-flex; align-items:center; gap:5px; margin:0 18px 16px; padding:8px 18px; background:var(--dark); color:#fff; font-size:12px; font-weight:600; letter-spacing:1px; border:none; border-radius:8px; cursor:pointer; font-family:'Sarabun',sans-serif; transition:background .2s; }
+  .copy-btn:hover { background:#4a3030; }
+  .copy-btn.copied { background:var(--sage); }
+
+  /* FOOTER */
+  footer { background:var(--dark); text-align:center; padding:36px 24px; color:rgba(255,255,255,.35); font-size:12px; line-height:1.9; }
+  .footer-brand { font-family:'Noto Serif Thai',serif; font-size:17px; color:var(--pink); display:block; margin-bottom:8px; font-weight:700; }
+
+  @keyframes popIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+  @media(max-width:600px){
+    .card-top{flex-direction:column;}
+    .card-num{font-size:38px;}
+    .card-body,.card-top{padding-left:16px;padding-right:16px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">✈ Mamatabi.jp × Marriott Bonvoy Japan 2026</div>
+  <h1>พาลูกเที่ยวญี่ปุ่นกลางปีนี้<br><span class="accent">พัก Marriott คืนละต่ำกว่า 5,000 บาท</span><br>มีให้เลือกเยอะเลย 🙌</h1>
+  <p class="hero-sub">July–September 2026 · โรงแรมระดับ Sheraton & Marriott เต็มรูปแบบ พร้อม Lounge Access ฟรีสำหรับสมาชิก Platinum ขึ้นไป · เขียนโดยคุณแม่ลูกสองคนไทยที่อาศัยอยู่ญี่ปุ่นค่ะ</p>
+  <div class="hero-chips">
+    <div class="chip">🏨 7 โรงแรม Sheraton & Marriott</div>
+    <div class="chip">💳 Platinum Recommended</div>
+    <div class="chip">👨‍👩‍👧 Family &amp; Kid-Friendly</div>
+    <div class="chip">✅ จากประสบการณ์พักจริง</div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="author-card">
+    <div class="author-avatar">👩‍👧</div>
+    <div>
+      <div class="author-name">Mamatabi.jp — ขวัญ คุณแม่คนไทยใน Nagoya</div>
+      <div class="author-desc">Platinum Elite · ถือบัตร Marriott AMEX 3 ใบ · พาลูก 2 คนเที่ยวด้วยแต้ม Bonvoy มา 4 ปีค่ะ</div>
+    </div>
+  </div>
+  <div class="intro-body">
+    <p>สวัสดีค่ะทุกคน! 🌸 วันนี้ขวัญมีเรื่องมาเล่าให้ฟังเพราะมีคนรู้จัก inbox มาถามว่า "คุณขวัญ พักโรงแรม Marriott ในญี่ปุ่นช่วงกลางปี (เด็กปิดเทอม) งบที่พักต้องเยอะมากมั้ย?" คำตอบคือ... <strong>ไม่เสมอไปค่ะ! 😁</strong></p>
+    <p>ขวัญอยู่ญี่ปุ่นมา 14 ปี มีลูก 2 คน (ตอนนี้ 3 ขวบกับ 6 ขวบ) และพยายามพาครอบครัวท่องเที่ยวทุกซีซัน สิ่งที่เรียนรู้มาตลอดคือ ถ้าเราเลือกเมืองให้ถูก ช่วงเวลาให้เหมาะ และมี <strong>Status Bonvoy</strong> ช่วย — โรงแรมระดับ Sheraton กับ Marriott ราคาไม่ต่างจากโรงแรม 3 ดาวทั่วไปเลยค่ะ!</p>
+    <p>บทความนี้ขวัญรวบรวม <strong>7 โรงแรมระดับ Sheraton / Marriott</strong> ที่ราคาต่ำกว่า 5,000 บาทต่อคืนในช่วงซัมเมอร์ July–September 2026 บางโรงแรม <strong>ขวัญเคยพักกับลูกๆ จริงๆ</strong> บางอันเป็นการค้นคว้าเพิ่มเติม จะบอกให้ชัดเจนทุกที่นะคะ 🙏</p>
+    <div class="mom-note">
+      💡 <strong>สิ่งที่หลายคนยังไม่รู้:</strong> สมาชิก Platinum ขึ้นไปจะได้สิทธิ์ <strong>Lounge Access ฟรี</strong> ในโรงแรม Sheraton และ Marriott ส่วนใหญ่ — รวมอาหารเช้าบุฟเฟ่ต์ + Cocktail Hour เย็นทุกวัน (หลายๆ ที่มีไลน์อาหารพออิ่มเลย) สำหรับครอบครัว ผู้ใหญ่ 2 + เด็ก 2 (จนอายุ 12 ปี) คำนวณแล้วประหยัดได้ราวๆ ¥8,000–15,000 ต่อคืน มูลค่าจริงๆ บางทีมากกว่าราคาห้องอีกค่ะ (โดยเฉพาะสายดื่ม อิอิอิ) 😲
+    </div>
+  </div>
+</section>
+
+<!-- SECTION HEADER -->
+<div class="section-header">
+  <div class="section-label">🌸 Main List</div>
+  <h2>7 โรงแรมแนะนำ ซัมเมอร์ 2026</h2>
+  <p>✅ = ขวัญเคยพักจริง · 📝 = ค้นคว้าเพิ่มเติม · เรียงจากที่แนะนำมากที่สุด</p>
+</div>
+
+<div class="hotels-wrap">
+
+  <!-- 01 Sheraton Miyako Osaka -->
+  <div class="hotel-card reviewed">
+    <div class="card-top">
+      <div class="card-num">01</div>
+      <div class="card-info">
+        <div class="card-badges">
+          <span class="badge badge-brand">Sheraton</span>
+          <span class="badge badge-review">✅ ขวัญเคยพักแล้ว</span>
+        </div>
+        <div class="card-name">Sheraton Miyako Hotel Osaka</div>
+        <div class="card-loc">📍 Osaka-Uehommachi (เขต Tennoji) · รถไฟตรงถึงสนามบิน KIX และ Itami</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="price-bar">
+        <div class="price-thb">~3,200–4,600 บาท <small>/คืน</small></div>
+        <div class="price-jpy">¥16,000–23,000 JPY</div>
+      </div>
+      <div class="card-story">
+        <p>อันนี้ขวัญขอยกให้เป็น <strong>อันดับ 1</strong> เลยค่ะ! 🥇 ขวัญพาลูก 2 คนมาพักที่นี่สองครั้งแล้ว และทุกครั้งยังรู้สึกว่า "คุ้มมากเลย ต้องมาพักอีกกกกก" ด้วยมูลค่าตัวโรงแรม สภาพและขนาดห้อง ทำเล และคุณภาพอาหารเช้า</p>
+        <p>จ่ายแค่ราวๆ ¥17,000 ต่อคืน แต่ในฐานะ Platinum ได้ <strong>Sheraton Club Lounge ฟรี</strong> รวมอาหารเช้าบุฟเฟ่ต์ 2 คน + cocktail hour เย็นอีก ถ้าคำนวณมูลค่าอาหารที่ได้ฟรี แทบไม่ต่างจากได้พักฟรีเลยค่ะ! 😂</p>
+        <p>ทำเล Uehommachi ดีมากสำหรับครอบครัว ขึ้นรถไฟไป Namba แค่ 3 นาที และมีรถบัส Airport Express หน้าโรงแรมตรงไปสนามบิน ไม่ต้องลากกระเป๋าขึ้นลงรถไฟให้วุ่นวาย 🧳</p>
+      </div>
+      <div class="perks-grid">
+        <div class="perk-item">🍳 อาหารเช้าบุฟเฟ่ต์ฟรี (Plat+)</div>
+        <div class="perk-item">🍸 Cocktail Hour ฟรีทุกเย็น</div>
+        <div class="perk-item">✈️ Airport Bus หน้าโรงแรม</div>
+        <div class="perk-item">👶 เด็กต่ำกว่า 5 ขวบพักฟรี</div>
+        <div class="perk-item">🚇 รถไฟตรง KIX &amp; Itami</div>
+        <div class="perk-item">🍽️ 4 ร้านอาหาร on-site</div>
+      </div>
+      <div class="tip-bubble"><strong>💌 Tip จากขวัญ:</strong> จองห้อง Standard แล้วขอ upgrade ที่ Front Desk ตอน Check-in เลยค่ะ! ในฐานะ Platinum ขวัญเคยได้ upgrade เป็นห้องใหญ่ขึ้น ราคาต่างกัน (ถ้าจอง) เป็นหลักหมื่นเยน เล้าจ์เด็กเข้าได้จนห้าโมง ขนมน้ำฟรีตลอดวันค่ะ แถมโรงแรมนี้เพิ่งรีโนเวทชั้นห้องสวีทไปด้วย เผื่อใครโชคดีได้อัพเกรดนะ จึ้งสุดๆ ไปเลย 🛏️</div>
+    </div>
+  </div>
+
+  <!-- 02 Sheraton Kagoshima -->
+  <div class="hotel-card reviewed">
+    <div class="card-top">
+      <div class="card-num">02</div>
+      <div class="card-info">
+        <div class="card-badges">
+          <span class="badge badge-brand">Sheraton</span>
+          <span class="badge badge-review">✅ ขวัญเคยพักแล้ว</span>
+        </div>
+        <div class="card-name">Sheraton Kagoshima</div>
+        <div class="card-loc">📍 Kagoshima City · ภูเขาไฟ Sakurajima + Onsen ธรรมชาติ · ใหม่เอี่ยมเพิ่งเปิดปี 2023</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="price-bar">
+        <div class="price-thb">~3,600–4,800 บาท <small>/คืน</small></div>
+        <div class="price-jpy">¥18,000–24,000 JPY</div>
+      </div>
+      <div class="card-story">
+        <p>ต้องบอกเลยค่ะว่า Kagoshima คือทริปที่ลูกๆ ประทับใจมากเป็นพิเศษ 🌋</p>
+        <p>เพราะพอเช็คอินเข้าห้องปุ๊บ ลูกชายคนโตชี้ให้ดูว่า "มะม้า ภูเขาไฟพ่นควันใหญ่เลย" เพราะห้องเราเห็นวิวภูเขาไฟ Sakurajima ตรงๆ ใหญ่ตระการตาสุดๆ เห็นภูเขาตลอดจากเตียงนอนและโซฟา ไม่ต้องขับรถไปดูเลยค่ะ ดูจากห้องเนี่ยแหละฟินสุด 🥺</p>
+        <p>Onsen ในโรงแรมเป็นน้ำพุร้อนธรรมชาติ (ที่เป็นน้ำเค็ม เพราะอยู่ติดทะเล) เด็กๆ ชอบกันมาก ช่วงกลางวันแขกจะน้อย เข้าไปแช่ทีเหมือนออนเซ็นส่วนตัว บรรยากาศดี เงียบสงบมากค่ะ ส่วนใน Lounge ยังมีเมนูพิเศษโดยเฉพาะของเมือง Kagoshima ด้วย เช่น Satsumaage (ลูกชิ้นปลาทอด) และ Katsuo no tataki (ซาชิมิปลาโอย่างลนไฟด้านนอก) และก็มีโชจูให้เลือกหลากหลายมากค่ะ วิวใน Lounge ก็จึ้งไม่ต่างกัน เป็น Panorama ยาว เห็นภูเขาชัดๆ ตลอดแนว 🍖</p>
+      </div>
+      <div class="perks-grid">
+        <div class="perk-item">🌋 วิว Sakurajima ตรงหน้าต่าง</div>
+        <div class="perk-item">♨️ Onsen ธรรมชาติในโรงแรม</div>
+        <div class="perk-item">🍳 Lounge ฟรี + อาหาร Local</div>
+        <div class="perk-item">🌿 Spa</div>
+        <div class="perk-item">🚗 ที่จอดรถฟรีถ้ามี Status</div>
+        <div class="perk-item">🍽️ 3 ร้านอาหาร Local Menu</div>
+      </div>
+      <div class="tip-bubble"><strong>💌 Tip จากขวัญ:</strong> Kagoshima เดินทางง่ายกว่าที่คิดมากค่ะ Shinkansen สาย Kyushu วิ่งตรงจาก Fukuoka (Hakata) แค่ 1.5 ชั่วโมง หรือจาก Osaka ประมาณ 3.5–4 ชั่วโมง เหมาะมากกับทริป <strong>Kyushu Loop</strong> ค่ะ หรือถ้ามาจากสนามบิน Kagoshima ก็มีบัสตรงเข้าเมืองนั่ง 35 นาที บัสออกทุก 10 นาที สะดวกมาก 🚄</div>
+    </div>
+  </div>
+
+  <!-- 03 Kobe Bay Sheraton -->
+  <div class="hotel-card">
+    <div class="card-top">
+      <div class="card-num">03</div>
+      <div class="card-info">
+        <div class="card-badges">
+          <span class="badge badge-brand">Sheraton</span>
+          <span class="badge badge-research">📝 Research-based</span>
+          <span class="badge" style="background:#fff0e0;color:#b06000;">🚌 มีบัสตรง USJ!</span>
+        </div>
+        <div class="card-name">Kobe Bay Sheraton Hotel &amp; Towers</div>
+        <div class="card-loc">📍 Rokko Island, Kobe · วิว Harbour + Onsen + Night View ชั้น 19</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="price-bar">
+        <div class="price-thb">~2,600–4,000 บาท <small>/คืน (ราคาถูกที่สุดในลิสต์! 🎉)</small></div>
+        <div class="price-jpy">¥13,000–20,000 JPY</div>
+      </div>
+      <div class="card-story">
+        <p>ขอตะโกนให้ทุกคนฟังดีๆ — <strong>โรงแรมนี้แนะนำสำหรับทุกคน ไม่ว่าจะมี Status หรือไม่ค่ะ!</strong> ที่นี่เป็น Sheraton ราคาถูกที่สุดในลิสต์นี้ แต่สิ่งที่ทำให้โรงแรมนี้พิเศษมากคือ ตัวอาคารสร้างในยุค <strong>Bubble Economy ของญี่ปุ่น (バブル経済)</strong> ช่วงปลาย 80s – ต้น 90s ซึ่งเป็นยุคที่ญี่ปุ่นอัดเงินก่อสร้างโรงแรมอย่างโอ่อ่าไม่มีใครสู้ได้ เพดานสูง พื้นที่กว้างขวาง วัสดุอย่างดี — ความโอ่อ่าแบบนั้นหายากมากในโรงแรมใหม่ๆ ค่ะ</p>
+        <p>ในโรงแรมมีครบมากสำหรับครอบครัว ทั้ง Onsen ธรรมชาติ สระว่ายน้ำในร่ม Sauna Jacuzzi และ Tennis Court ร้านอาหารมีถึง 5 ร้าน หลายร้านราคาย่อมเยามาก ไม่จำเป็นต้องออกไปข้างนอกหาอาหารเลยก็ได้ค่ะ</p>
+        <p><strong>ส่วน Lounge</strong> — รีวิวอย่างจริงใจ ว่าไม่ได้หรูหรามากนะคะ ไลน์อาหารน้อย (ไปกินร้านในตึกโรงแรมเถอะ มีให้เลือกมากมาย) และคนพักที่นี่แน่นตลอดปีเพราะราคาดีมาก ดังนั้น Upgrade ก็ไม่ค่อยมีให้อยู่แล้ว แต่ข่าวดีคือ ที่นี่ <strong>จองด้วย Bonvoy Points ไม่ได้</strong> — ซึ่งหมายความว่าจองด้วยเงินอย่างเดียว และราคาก็ถูกมากอยู่แล้ว คนที่ไม่มี Status หรือ Points ก็ไม่เสียเปรียบเลยค่ะ 😊</p>
+      </div>
+
+      <!-- BUS TO USJ BOX -->
+      <div style="background:linear-gradient(135deg,#fff3e0,#fff8f0);border:2px solid #f7a85a;border-radius:14px;padding:18px 20px;margin:16px 0;">
+        <div style="font-size:13px;font-weight:700;color:#b56a10;letter-spacing:1px;margin-bottom:10px;">🚌 ไฮไลท์พิเศษ: มีบัสตรงจากโรงแรมไป USJ!</div>
+        <p style="font-size:14px;color:#5a3a20;line-height:1.85;margin-bottom:12px;">นี่คือเหตุผลหลักที่ขวัญแนะนำที่นี่สำหรับครอบครัวที่แพลนไป <strong>Universal Studios Japan (USJ)</strong> เพราะมีบัสตรงออกจากหน้าโรงแรมไป USJ เลย ไม่ต้องลากกระเป๋าขึ้นรถไฟ ไม่ต้องเปลี่ยน platform ให้วุ่นวาย ขึ้นบัสหน้าโรงแรม ถึง USJ ใน <strong>25 นาที</strong> ค่ะ</p>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead>
+            <tr style="background:#f7a85a;color:#fff;">
+              <th style="padding:7px 10px;text-align:left;">ออกจากโรงแรม</th>
+              <th style="padding:7px 10px;text-align:left;">ถึง USJ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fffaf5;"><td style="padding:6px 10px;border-bottom:1px solid #f0e0cc;">07:05</td><td style="padding:6px 10px;border-bottom:1px solid #f0e0cc;">07:30</td></tr>
+            <tr style="background:#fff;"><td style="padding:6px 10px;border-bottom:1px solid #f0e0cc;">07:30</td><td style="padding:6px 10px;border-bottom:1px solid #f0e0cc;">07:55</td></tr>
+            <tr style="background:#fffaf5;"><td style="padding:6px 10px;border-bottom:1px solid #f0e0cc;">09:10</td><td style="padding:6px 10px;border-bottom:1px solid #f0e0cc;">09:35</td></tr>
+            <tr style="background:#fff;"><td style="padding:6px 10px;border-bottom:1px solid #f0e0cc;">09:35</td><td style="padding:6px 10px;border-bottom:1px solid #f0e0cc;">10:00</td></tr>
+            <tr style="background:#fffaf5;"><td style="padding:6px 10px;border-bottom:1px solid #f0e0cc;">11:15</td><td style="padding:6px 10px;border-bottom:1px solid #f0e0cc;">11:40</td></tr>
+            <tr style="background:#fff;"><td style="padding:6px 10px;border-bottom:1px solid #f0e0cc;">16:25</td><td style="padding:6px 10px;border-bottom:1px solid #f0e0cc;">16:50</td></tr>
+            <tr style="background:#fffaf5;"><td style="padding:6px 10px;">20:55</td><td style="padding:6px 10px;">21:20 🌙 กลับจาก USJ ได้!</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:12px;font-size:12px;color:#8a6040;line-height:1.8;">
+          🚌 <strong>สายรถ:</strong> มินาโตะ観光バス 系統61 (Minato Kanko Bus Route 61) ผ่าน Kobe Airport ด้วยค่ะ<br>
+          💳 <strong>ราคา:</strong> ประมาณ ¥700–1,900/คน (กรุณาเช็คราคาล่าสุดที่ <a href="https://www.kobe-minato.co.jp/" target="_blank" style="color:#b56a10;">เว็บ Minato Bus</a>)<br>
+          📅 <strong>ต้องจองล่วงหน้า:</strong> ตั้งแต่ April 2025 เป็นต้นมา จองผ่าน "発車オ〜ライネット" ก่อน 18:00 ของวันก่อนเดินทางนะคะ<br>
+          📖 <a href="https://hachirouhaha.hatenablog.com/entry/kobe-bay-sheraton-to-usj-direct-bus-guide" target="_blank" style="color:#b56a10;">อ่านรายละเอียดเต็มๆ ที่นี่ค่ะ →</a>
+        </div>
+      </div>
+
+      <div class="perks-grid">
+        <div class="perk-item">💰 ราคาถูกสุดในลิสต์</div>
+        <div class="perk-item">🚌 บัสตรง USJ ~25 นาที</div>
+        <div class="perk-item">♨️ Onsen + Sauna + Jacuzzi</div>
+        <div class="perk-item">🌃 Club Lounge</div>
+        <div class="perk-item">🏊 สระว่ายน้ำในร่ม</div>
+        <div class="perk-item">🍽️ 5 ร้านอาหาร ราคาย่อมเยา</div>
+        <div class="perk-item">🏛️ ตึกโรงแรมมีความฟู่ฟ่าหรูหรายุค Bubble</div>
+        <div class="perk-item">✅ แนะนำสำหรับทุกคน ไม่ต้องมี Status</div>
+      </div>
+      <div class="tip-bubble"><strong>💌 Tip จากขวัญ:</strong> ต้องจองบัส USJ ล่วงหน้าก่อนออกเดินทางนะคะ สาย 61 มีบัสเช้าตรู่ 7:05 น. ซึ่งถ้าขึ้นได้ทัน จะถึง USJ ก่อนเปิดพอดี 🎢 และบัสเย็น 20:55 น. ก็เหมาะกับบ้านที่แพลนจะเล่นถึงเวลาปิดเลย</div>
+      <div class="warn-bubble">⚠️ โรงแรมอยู่บน Rokko Island ต้องต่อ Monorail เข้าเมือง Kobe กลางเมือง ประมาณ 15 นาที แต่ถ้าวัตถุประสงค์หลักคือ USJ ก็ไม่เป็นปัญหาเลยค่ะ เพราะมีบัสตรงจากโรงแรมอยู่แล้ว</div>
+    </div>
+  </div>
+
+  <!-- 04 Kobe Marriott -->
+  <div class="hotel-card">
+    <div class="card-top">
+      <div class="card-num">04</div>
+      <div class="card-info">
+        <div class="card-badges">
+          <span class="badge badge-brand">Marriott</span>
+          <span class="badge badge-new">🆕 Rebranded 2025</span>
+          <span class="badge badge-research">📝 Research-based</span>
+        </div>
+        <div class="card-name">Kobe Marriott Hotel</div>
+        <div class="card-loc">📍 Kobe Station / Harborland · ใจกลางเมือง ริมทะเล</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="price-bar">
+        <div class="price-thb">~3,600–5,000 บาท <small>/คืน</small></div>
+        <div class="price-jpy">¥18,000–25,000 JPY</div>
+      </div>
+      <div class="card-story">
+        <p>โรงแรมนี้น่าสนใจมากค่ะ เพราะเพิ่ง rebrand เข้า Marriott network ในปลายปี 2025 ทำให้ราคายังไม่ดันสูงมาก — เหมาะมากสำหรับจองล่วงหน้าตอนนี้เลยค่ะ</p>
+        <p>จุดเด่นที่ทำให้ขวัญสนใจมากคือ <strong>ทำเลติด Kobe Harborland</strong> และที่สำคัญที่สุดสำหรับครอบครัว คือ <strong>Kobe Anpanman Children's Museum &amp; Mall อยู่แค่ 10 นาที!</strong> 🍞🎉 ลูกๆ จะดีใจมากเลยค่ะ!</p>
+        <p>M Club Lounge ฟรีสำหรับ Platinum/Titanium รวมอาหารเช้าและ cocktail hour นะคะ</p>
+      </div>
+      <div class="perks-grid">
+        <div class="perk-item">🍞 ใกล้ Anpanman Museum 10 นาที</div>
+        <div class="perk-item">🌊 ติด Kobe Harborland</div>
+        <div class="perk-item">☕ M Club Lounge ฟรี (Plat+)</div>
+        <div class="perk-item">🛁 Public Bath ในโรงแรม</div>
+        <div class="perk-item">💪 Spa + Fitness Center</div>
+        <div class="perk-item">🍳 อาหารเช้า ~¥3,800/คน</div>
+      </div>
+      <div class="tip-bubble"><strong>💌 Tip:</strong> เพราะเพิ่ง rebrand มาไม่นาน ราคายังไม่ดัน peak — จองเร็วได้ราคาดีกว่า และยังได้ห้องที่ยังใหม่อยู่ด้วยนะคะ</div>
+      <div class="warn-bubble">⚠️ บางรีวิวแจ้งว่าห้องชั้นล่างฝั่ง Mountain view มีเสียง highway ตอนกลางคืน — แนะนำขอห้อง Bay View ชั้นสูงๆ เลยค่ะ และเพราะเพิ่งรีแบรนด์ พนักงานอาจจะยังบริการไม่เก่งเท่าไหร่ แต่รีวิวช่วงหลังดูเข้าที่เข้าทางมากขึ้น ได้รับเสียงชมมากขึ้นแล้วค่ะ</div>
+    </div>
+  </div>
+
+  <!-- 05 Lake Biwa -->
+  <div class="hotel-card reviewed">
+    <div class="card-top">
+      <div class="card-num">05</div>
+      <div class="card-info">
+        <div class="card-badges">
+          <span class="badge badge-brand">Marriott Resort</span>
+          <span class="badge badge-review">✅ ขวัญเคยพักแล้ว</span>
+        </div>
+        <div class="card-name">Lake Biwa Marriott Hotel</div>
+        <div class="card-loc">📍 Moriyama, Shiga · ริมทะเลสาบที่ใหญ่สุดในญี่ปุ่น · 30 นาทีจาก Kyoto</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="price-bar">
+        <div class="price-thb">~4,000–5,600 บาท <small>/คืน</small></div>
+        <div class="price-jpy">¥20,000–28,000 JPY</div>
+      </div>
+      <div class="card-story">
+        <p>ถ้าถามขวัญว่า จะไปเกียวโตแต่ไม่อยากอยู่เกียวโตตลอด ต้องพาไปแวะที่ไหน — Lake Biwa Marriott คือคำตอบค่ะ โรงแรมริมทะเลสาบที่ใหญ่ที่สุดในญี่ปุ่น ใหญ่เหมือนทะเลเลย 🥺💙</p>
+        <p>ขวัญแนะนำให้จอง Tatami Room ถ้าทริปมีผู้ใหญ่ 3 คนกับเด็ก 1–2 คน เพราะนอนด้วยกันได้สบายๆ หรืออีกห้องที่เริ่ดมากๆ ก็คือห้องเตียงคู่ที่มี private bath แช่น้ำ Onsen ดูวิวทะเลสาบ Biwa ราคาไม่ได้แพงขึ้นมาก สามารถจองไปเลยไม่ต้องรออัพเกรดค่ะ</p>
+        <p>และที่เด็กๆ ชอบที่สุดคือ <strong>ท้องฟ้าจำลอง (Planetarium)</strong> ในตึกข้างโรงแรม 🔭 เด็กๆ มีกิจกรรมให้ทำตลอด รับรองว่าไม่มีเบื่อค่ะ</p>
+      </div>
+      <div class="perks-grid">
+        <div class="perk-item">🔭 Planetarium ดูดาวในโรงแรม!</div>
+        <div class="perk-item">🛏️ ห้อง Tatami หรือห้อง Private Onsen</div>
+        <div class="perk-item">🚲 เช่าจักรยานปั่นรอบทะเลสาบดูวิว</div>
+        <div class="perk-item">🏊 สระว่ายน้ำในร่ม + Sauna</div>
+        <div class="perk-item">🚌 Shuttle ฟรี ↔ JR Katata</div>
+        <div class="perk-item">🍽️ อาหารเช้า Restaurant วิว Lake ชั้น 12</div>
+      </div>
+      <div class="warn-bubble">⚠️ <strong>สำคัญมาก!</strong> ตั้งแต่ April 2026 โรงแรมนี้ <strong>ยกเลิก Elite Lounge สำหรับ Platinum/Titanium</strong> แล้วค่ะ — คำนวณราคาโดยไม่รวม Lounge benefit นะคะ ยังคุ้มอยู่ แต่ต้องรู้ก่อนจอง!</div>
+      <div class="tip-bubble"><strong>💌 Tip จากขวัญ:</strong> จองห้อง <strong>Tatami</strong> หรือ <strong>2 Twin with Onsen Lake View</strong> เลยนะคะ ราคาต่างกับห้องถูกสุดไม่เยอะมาก แต่ประสบการณ์ต่างกันมาก เด็กสนุกแล้ว ผู้ใหญ่ก็ต้องได้พักผ่อนดูวิวสบายๆ ด้วย 😂</div>
+    </div>
+  </div>
+
+  <!-- 06 Nagasaki Marriott -->
+  <div class="hotel-card">
+    <div class="card-top">
+      <div class="card-num">06</div>
+      <div class="card-info">
+        <div class="card-badges">
+          <span class="badge badge-brand">Marriott</span>
+          <span class="badge badge-new">🆕 New Hotel</span>
+          <span class="badge badge-research">📝 Research-based</span>
+        </div>
+        <div class="card-name">Nagasaki Marriott Hotel</div>
+        <div class="card-loc">📍 Nagasaki Station · Night View ระดับ Top 3 ของญี่ปุ่น</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="price-bar">
+        <div class="price-thb">~4,000–6,000 บาท <small>/คืน (เช็คราคาช่วง Sep ค่ะ)</small></div>
+        <div class="price-jpy">¥20,000–30,000 JPY</div>
+      </div>
+      <div class="card-story">
+        <p>Nagasaki Marriott เพิ่งเปิดใหม่ เป็น Marriott เต็มรูปแบบที่ขึ้นชื่อเรื่องความหรูหราเกินแบรนด์ และคุณภาพอาหารค่ะ ตั้งอยู่ใน Complex เดียวกับสถานี Nagasaki ขึ้นชั้น 7 ก็ถึง Lobby — ไม่ต้องลากกระเป๋าไปไหนเลย 😍</p>
+        <p>จุดขายหลักคือ <strong>M Club Lounge บนชั้นสูงสุด</strong> ที่มองเห็น Nagasaki Night View อันโด่งดัง (ติด Top 3 Night View สวยที่สุดของญี่ปุ่น) สำหรับ Platinum/Titanium ดู Night View ฟรีทุกคืนพร้อม cocktail ค่ะ ❤️</p>
+        <p>ซัมเมอร์ช่วง July–August อาจเกิน budget นิดนึง แนะนำเช็คราคา <strong>September</strong> ที่เริ่มลดลงแล้วค่ะ</p>
+      </div>
+      <div class="perks-grid">
+        <div class="perk-item">🌃 M Club Lounge วิว Night View</div>
+        <div class="perk-item">🚉 ติดสถานี Nagasaki</div>
+        <div class="perk-item">🍱 Kaiseki + Teppanyaki</div>
+        <div class="perk-item">🛍️ ติด Amu Plaza Mall</div>
+        <div class="perk-item">👶 เด็กต่ำกว่า 13 ปี แชร์เตียงฟรี</div>
+        <div class="perk-item">🌊 วิว Harbour + Mount Inasa</div>
+      </div>
+      <div class="tip-bubble"><strong>💌 Tip:</strong> Nagasaki เหมาะมากสำหรับครอบครัวที่มีเด็กค่ะ เพราะมีที่เที่ยวเยอะมาก มี Dejima ท่าเรือดัตช์โบราณ น่าเรียนรู้ + Huis Ten Bosch สวนสนุกธีม Dutch ไม่ไกล 🏯 ส่วนอาหารแนะนำก็เป็น Champon (ผัดหมี่ราดหน้าสไตล์ญี่ปุ่น) ผักเยอะๆ เส้นหนาเอกลักษณ์ ซุปเป็นทงคตสึ อร่อยมากค่ะ!</div>
+    </div>
+  </div>
+
+  <!-- 07 Hamamatsu -->
+  <div class="hotel-card">
+    <div class="card-top">
+      <div class="card-num">07</div>
+      <div class="card-info">
+        <div class="card-badges">
+          <span class="badge badge-brand">Marriott</span>
+          <span class="badge badge-new">🔥 เพิ่งเปิด May 2026</span>
+          <span class="badge badge-research">📝 Research-based</span>
+        </div>
+        <div class="card-name">Hamamatsu Marriott Hotel</div>
+        <div class="card-loc">📍 Hamamatsu Station, Shizuoka · กึ่งกลาง Tokyo–Osaka บน Shinkansen</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="price-bar">
+        <div class="price-thb">~3,400–5,600 บาท <small>/คืน</small></div>
+        <div class="price-jpy">¥17,000–28,000 JPY</div>
+      </div>
+      <div class="card-story">
+        <p>อันนี้น้องใหม่ที่สุดค่ะ เพิ่งเปิดเดือน May 2026 นี้เอง! 🎉 Marriott แบรนด์เต็มรูปแบบแห่งแรกใน Hamamatsu เมืองบ้านเกิดของ Yamaha, Roland และ Honda 🎹🚗</p>
+        <p>เหมาะมากสำหรับทริปที่อยาก <strong>แวะพักระหว่าง Tokyo กับ Osaka</strong> ค่ะ — Hamamatsu อยู่บน Shinkansen Tokaido Line กึ่งกลางพอดี มาพักคืนนึง เที่ยว Lake Hamana + Mt. Fuji ฝั่ง Shizuoka แล้วไปต่อสะดวกมาก</p>
+      </div>
+      <div class="perks-grid">
+        <div class="perk-item">🆕 ใหม่เอี่ยม 2026!</div>
+        <div class="perk-item">☕ M Club Lounge ฟรี (Platinum)</div>
+        <div class="perk-item">🗻 ใกล้ Lake Hamana + Mt. Fuji</div>
+        <div class="perk-item">🍱 Kaiseki + Teppanyaki</div>
+        <div class="perk-item">🚄 Shinkansen ถึงหน้าโรงแรม</div>
+        <div class="perk-item">💪 Fitness Center ครบ</div>
+      </div>
+      <div class="tip-bubble"><strong>💌 Tip พิเศษ:</strong> เพราะเพิ่งเปิด ยังหารีวิวเต็มๆ ไม่ค่อยได้ แต่จากข่าววงในเค้าบอกว่าโรงแรมกำลังรีโนเวทสระว่ายน้ำและออนเซ็นอยู่ ใครจะไปพัก รอรีโนเวทให้เสร็จก่อนน่าจะดีค่ะ 😍🔥</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- STATUS STRIP -->
+<section class="perks-strip">
+  <h3>สรุป Lounge Access ฟรี<br>สำหรับสมาชิก Platinum Elite 🏆</h3>
+  <p class="strip-sub">ทุกโรงแรมในลิสต์ (ยกเว้น Lake Biwa ที่ยกเลิกแล้วตั้งแต่ April 2026) ให้ Lounge Access ฟรีสำหรับ Platinum ขึ้นไป — นี่คือเหตุผลที่ราคาที่พักคืนละ 3,500 บาทนั้นคุ้มกว่าโรงแรม 5 ดาว (ก็ 4 คนกินฟรีดื่มฟรีไปแล้วสองมื้อต่อวัน ฮ่า)</p>
+  <div class="strip-grid">
+    <div class="strip-card"><div class="strip-icon">🍳</div><div class="strip-title">อาหารเช้าบุฟเฟ่ต์ฟรี</div><div class="strip-desc">มูลค่า ¥3,800–7,500/คน/วัน สำหรับผู้ใหญ่ 2 คน ประหยัดได้ ~¥8,000–15,000 ต่อคืน</div></div>
+    <div class="strip-card"><div class="strip-icon">🍸</div><div class="strip-title">Cocktail Hour ฟรีทุกเย็น</div><div class="strip-desc">ช่วง 17:00–20:00 ทุกวัน เครื่องดื่ม + อาหาร hors d'oeuvres และ snack ท้องถิ่น</div></div>
+    <div class="strip-card"><div class="strip-icon">⬆️</div><div class="strip-title">มีโอกาสได้ Upgrade ฟรี</div><div class="strip-desc">รอลุ้นกันที่ Front Desk เวลา Check-in โอกาส Upgrade ง่ายขึ้นมากถ้าไปวันธรรมดา</div></div>
+    <div class="strip-card"><div class="strip-icon">🕐</div><div class="strip-title">Late Check-out 16:00 (อันนี้คือดีสุดๆ)</div><div class="strip-desc">ขอได้ตอน Check-in — สะดวกมากสำหรับครอบครัวที่มีเด็กเล็กและไม่อยากรีบออกค่ะ</div></div>
+  </div>
+</section>
+
+<!-- NO STATUS SECTION -->
+<section class="no-status">
+  <div class="no-status-inner">
+    <div class="no-status-header">
+      <span class="emoji-big">🌱</span>
+      <h3>ยังไม่มี Status ไม่ต้องเสียใจนะคะ<br>แค่สมัครเป็นสมาชิก เด็กก็ทานข้าวเช้าฟรี</h3>
+      <p>Marriott Bonvoy มีแบรนด์ราคาย่อมเยาที่เหมาะกับช่วง build status โดยเฉพาะ ขวัญก็เริ่มจากตรงนี้เหมือนกันค่ะ สะสม Night ไปเรื่อยๆ แล้วการไปพักจะสบายขึ้นเรื่อยๆ ค่ะ 😊</p>
+    </div>
+    <div class="budget-cards">
+      <div class="budget-card fpf">
+        <div class="budget-card-top">
+          <div class="budget-icon">🏙️</div>
+          <div>
+            <div class="budget-brand">Four Points Flex by Sheraton</div>
+            <div class="budget-sub">แบรนด์ใหม่ล่าสุด · ใจกลางเมือง</div>
+          </div>
+        </div>
+        <div class="budget-price">~2,600–4,000 บาท <small>/คืน</small></div>
+        <div class="budget-desc">แบรนด์ใหม่ล่าสุดใน Bonvoy Japan ราคาถูกที่สุด แต่ทำเลดีมาก อยู่ใจกลางเมืองทุกแห่ง บางสาขามีอาหารเช้าฟรี ยังเก็บ Qualifying Nights ได้ (0.5 nights/คืน) เหมาะมากสำหรับ build status ค่ะ!</div>
+        <div class="budget-locations">
+          <span class="loc-tag">🏯 Kyoto Oike</span>
+          <span class="loc-tag">🌆 Osaka Kitahama</span>
+          <span class="loc-tag">🚄 Shin-Osaka</span>
+          <span class="loc-tag">🐼 Tokyo Ueno</span>
+          <span class="loc-tag">⚓ Yokohama</span>
+          <span class="loc-tag">⛪ Kobe</span>
+          <span class="loc-tag">🌊 Hakata Fukuoka</span>
+          <span class="loc-tag">🗺️ Kanazawa</span>
+        </div>
+      </div>
+      <div class="budget-card moxy">
+        <div class="budget-card-top">
+          <div class="budget-icon">🎨</div>
+          <div>
+            <div class="budget-brand">Moxy Hotels</div>
+            <div class="budget-sub">Boutique + Fun + Social Vibes</div>
+          </div>
+        </div>
+        <div class="budget-price">~3,600–5,000 บาท <small>/คืน</small></div>
+        <div class="budget-desc">Design Hotel สไตล์วัยรุ่น ห้องเล็กแต่ตกแต่งสวย บรรยากาศ Social ดี มี Bar ชั้นล่าง เหมาะสำหรับคู่รักหรือครอบครัวที่ออกเที่ยวทั้งวัน ไม่ได้อยู่ในห้องมาก — คุ้มค่าดีค่ะ!</div>
+        <div class="budget-locations">
+          <span class="loc-tag">🎮 Tokyo Kinshicho</span>
+          <span class="loc-tag">🌆 Osaka Shin-Umeda</span>
+          <span class="loc-tag">🌃 Osaka Namba</span>
+        </div>
+      </div>
+      <div class="budget-card fairfield">
+        <div class="budget-card-top">
+          <div class="budget-icon">🌾</div>
+          <div>
+            <div class="budget-brand">Fairfield by Marriott</div>
+            <div class="budget-sub">Michi-no-Eki · Road Trip Special</div>
+          </div>
+        </div>
+        <div class="budget-price">~2,000–3,600 บาท <small>/คืน</small></div>
+        <div class="budget-desc">ถูกที่สุดใน Bonvoy! ตั้งอยู่ริม highway นอกเมือง ติดกับ Roadside Station ญี่ปุ่น เหมาะสำหรับ <strong>Road Trip</strong> ขับรถเที่ยวชนบท Hokkaido, Kyushu, Kansai — ประหยัดมาก แต่ต้องมีรถ</div>
+        <div class="budget-locations">
+          <span class="loc-tag">🌸 Hokkaido Furano</span>
+          <span class="loc-tag">🌋 Kumamoto Aso</span>
+          <span class="loc-tag">🌊 Kyoto Amanohashidate</span>
+          <span class="loc-tag">🗻 Shizuoka Fuji</span>
+          <span class="loc-tag">🍵 Mie Ise</span>
+        </div>
+      </div>
+      <div class="budget-card aloft">
+        <div class="budget-card-top">
+          <div class="budget-icon">🎵</div>
+          <div>
+            <div class="budget-brand">Aloft Hotels</div>
+            <div class="budget-sub">Urban Chic · Music Lover Vibes</div>
+          </div>
+        </div>
+        <div class="budget-price">~3,800–5,200 บาท <small>/คืน</small></div>
+        <div class="budget-desc">Stylish และ modern กว่า Moxy นิดนึง ห้องออกแบบดี มีดนตรีสดที่ Bar บ่อยๆ บรรยากาศดีมาก เหมาะสำหรับคนชอบ Design Hotel แต่อยากได้แบรนด์ Marriott ค่ะ</div>
+        <div class="budget-locations">
+          <span class="loc-tag">🌆 Osaka Dojima</span>
+          <span class="loc-tag">🗼 Tokyo Ginza</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IG CAPTIONS -->
+<section class="ig-section">
+  <div class="ig-inner">
+    <h3>IG / FB Captions 📸</h3>
+    <p class="ig-intro">Copy ไปใช้ได้เลยนะคะ 🙌 แก้รายละเอียดให้ตรงกับประสบการณ์จริงของตัวเองด้วยค่ะ</p>
+
+    <div class="ig-card">
+      <div class="ig-card-head">📸 Main Overview Post — 7 โรงแรม</div>
+      <div class="ig-text" id="ig1">แม่ๆ ทั้งหลาย! ขวัญรวบรวมมาให้แล้วค่ะ 🙌🇯🇵
+
+Marriott ในญี่ปุ่น ต่ำกว่า 5,000 บาท มีจริงนะ!
+และยังเป็น Sheraton กับ Marriott เต็มรูปแบบด้วยค่ะ ไม่ใช่แบรนด์ย่อย 💪
+
+7 โรงแรมที่ขวัญคัดมา สำหรับ July–Sep 2026:
+📍 Osaka · Kobe · Kagoshima
+📍 Lake Biwa · Nagasaki · Hamamatsu
+
+แต่ที่ wow ที่สุดคือถ้ามี Platinum Status:
+🍳 อาหารเช้าบุฟเฟ่ต์ฟรีทุกวัน (~¥4,000/คน!)
+🍸 Cocktail Hour ฟรีทุกเย็น
+⬆️ มีโอกาสได้ Upgrade ห้องฟรี
+
+จ่าย 3,500 บาท แต่ value จริงๆ เกิน 6,000 บาทค่ะ 🤫
+
+Save โพสนี้ไว้ก่อนเลยนะ แล้วขวัญจะมาเล่าทีละโรงแรมค่ะ 🙏
+<span class="tags">#MarriottJapan #โรงแรมญี่ปุ่น #เที่ยวญี่ปุ่น #MarriottBonvoy #Platinum #Mamatabi.jp #แม่ไทยในญี่ปุ่น #ครอบครัวเที่ยวญี่ปุ่น #Sheraton #LuxuryOnABudget #ซัมเมอร์ญี่ปุ่น</span></div>
+      <button class="copy-btn" onclick="copyIG('ig1',this)">⎘ Copy Caption</button>
+    </div>
+
+    <div class="ig-card">
+      <div class="ig-card-head">📸 Sheraton Miyako Osaka — ขวัญเคยพักจริง</div>
+      <div class="ig-text" id="ig2">Sheraton Osaka ราคา 3,500 บาท แต่ได้ Lounge ฟรี 🙈🙌
+
+นี่คือ secret ที่ขวัญอยากบอกทุกคนเลยค่ะ!
+
+พาลูก 2 คนมาพักที่ Sheraton Miyako Osaka
+ค่าห้องแค่ ~¥17,000/คืน แต่ในฐานะ Platinum ได้:
+✅ อาหารเช้าบุฟเฟ่ต์ฟรี 2 คน (~¥8,000 value!)
+✅ Cocktail Hour ฟรีทุกเย็น
+✅ รถบัส Airport Express หน้าโรงแรม ตรง KIX เลย
+
+ทำเล Uehommachi ขึ้นรถไฟไป Namba แค่ 3 นาที
+เที่ยว Nara ก็สะดวกมากนะคะ 🦌
+
+สำหรับครอบครัวที่มีเด็กเล็ก + มี Bonvoy Status
+นี่คือ value ที่ดีที่สุดที่หาได้ในโอซาก้าค่ะ 💯
+
+ไม่มี Status ยังไง? Comment ไว้เลยค่ะ
+ขวัญจะมาเล่าเรื่องบัตร AMEX ให้ฟัง 😄
+<span class="tags">#SheratonMiyako #SheratonOsaka #โอซาก้า #MarriottBonvoy #Platinum #Mamatabi.jp #ครอบครัวเที่ยวญี่ปุ่น #แม่ไทยในญี่ปุ่น</span></div>
+      <button class="copy-btn" onclick="copyIG('ig2',this)">⎘ Copy Caption</button>
+    </div>
+
+    <div class="ig-card">
+      <div class="ig-card-head">📸 Sheraton Kagoshima — ขวัญเคยพักจริง</div>
+      <div class="ig-text" id="ig3">ตื่นเช้ามาเจออันนี้ตรงหน้าต่าง... 🌋🥺
+
+ภูเขาไฟ Sakurajima พ่นควันอยู่ตรงๆ เลย!
+นี่คือ Sheraton Kagoshima ค่ะ
+
+ราคา ~¥18,000–24,000/คืน (~3,600–4,800 บาท)
+ในฐานะ Platinum ได้ฟรีทันที:
+🌋 วิว Sakurajima แบบ exclusive
+♨️ Onsen ธรรมชาติในโรงแรม
+🍳 อาหารเช้าบุฟเฟ่ต์ รวม Kurobuta Pork ท้องถิ่น!
+
+ลูกๆ บอกว่าชอบทริปนี้มากที่สุด
+เพราะได้แช่ onsen แล้วมองภูเขาไฟ
+ความประทับใจแบบนี้ซื้อไม่ได้ค่ะ 🥺
+
+Kagoshima เดินทางง่ายมาก
+จาก Fukuoka แค่ 1.5 ชม. โดย Shinkansen 🚄
+
+Save ไว้วางแผน Kyushu Trip ได้เลยนะคะ 🙏
+<span class="tags">#SheratonKagoshima #鹿児島 #Kagoshima #Sakurajima #Onsen #Mamatabi.jp #Kyushu #MarriottBonvoy #แม่ไทยในญี่ปุ่น</span></div>
+      <button class="copy-btn" onclick="copyIG('ig3',this)">⎘ Copy Caption</button>
+    </div>
+
+    <div class="ig-card">
+      <div class="ig-card-head">📸 Lake Biwa Marriott — ขวัญเคยพักจริง</div>
+      <div class="ig-text" id="ig4">Marriott พื้น Tatami + Onsen ส่วนตัว
++ ท้องฟ้าจำลองในโรงแรม 🌊✨
+
+แค่ 30 นาทีจากเกียวโต!
+
+Lake Biwa Marriott Hotel — hidden gem ที่ขวัญรักมากค่ะ
+
+พักห้อง Tatami 4 ที่นอน กับ private bath น้ำ Onsen
+วิวทะเลสาบ Biwa ตื่นเช้ามา...
+
+Activities ที่ลูกๆ ชอบมาก:
+🔭 Planetarium ดูดาวก่อนนอน!
+🚲 ปั่นจักรยานริมทะเลสาบ
+🏊 สระว่ายน้ำในร่ม
+♨️ Public Onsen Bath
+
+นอน Tatami กินข้าวเช้า Japanese Style
+มองวิวทะเลสาบ — นี่คือ "ญี่ปุ่นแท้ๆ" ค่ะ 🥺
+
+⚠️ Note: ตั้งแต่ April 2026 ที่นี่ยกเลิก Lounge
+สำหรับ Elite แล้วนะคะ คำนวณราคาด้วยค่ะ
+
+#LakeBiwaMarriott #琵琶湖 #MarriottJapan #Tatami #OnsenHotel #Mamatabi.jp #ครอบครัวเที่ยวญี่ปุ่น #แม่ไทยในญี่ปุ่น #FamilyTravel</div>
+      <button class="copy-btn" onclick="copyIG('ig4',this)">⎘ Copy Caption</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">✈ Mamatabi.jp</span>
+  แม่ไทยใน Nagoya · แชร์ประสบการณ์พาครอบครัวเที่ยวญี่ปุ่นอย่างคุ้มค่า ด้วยแต้ม Bonvoy<br><br>
+  ราคาที่แสดงเป็นราคาประมาณ อาจเปลี่ยนแปลงตามฤดูกาลและความต้องการ<br>
+  กรุณาเช็คราคาจริงบน <strong style="color:rgba(255,255,255,.6)">Marriott.com</strong> ก่อนจองเสมอนะคะ 🙏<br>
+  อัตราแลกเปลี่ยนอ้างอิง: 1 THB ≈ 5 JPY
+</footer>
+
+<script>
+function copyIG(id, btn) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '⎘ Copy Caption'; btn.classList.remove('copied'); }, 2500);
+  }).catch(() => {
+    const el = document.getElementById(id);
+    const r = document.createRange(); r.selectNode(el);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(r);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    btn.textContent = '✓ Copied!'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '⎘ Copy Caption'; btn.classList.remove('copied'); }, 2500);
+  });
+}
+</script>
+</body>
+</html>
